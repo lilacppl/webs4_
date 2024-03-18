@@ -10,7 +10,6 @@
             <p> {{ species }}</p>
         </div>
     </div>
-
 </template>
 
 <style>
@@ -68,7 +67,8 @@ props: {
 data() {
     return {
         isHovered: false,
-        data: []
+        data: [],
+        isExpanded: false // Ajout d'une propriété pour suivre l'état d'expansion
     }
 },
 
