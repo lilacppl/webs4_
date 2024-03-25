@@ -2,12 +2,13 @@
 import getAllData from "@/api.js";
 import card from "@/components/cards.vue";
 import topmenu from '@/components/topmenu.vue';
+import expanded from "@/components/expandedcard.vue";
 </script>
 
 <template>
     <div>
         <topmenu @sort="sortCards" @select="selectCards" @randomEvent="randomCards" @search="searchCards"/>
-  </div>
+    </div>
     <div class="gallery">
         <card
         v-for="cards in characters"
@@ -19,14 +20,16 @@ import topmenu from '@/components/topmenu.vue';
         @click="toggleCardExpansion(cards.id)"
         :class="{ expanded: cards.id === expandedCardId }"/>
     </div>
-    <div v-if="expandedCardId !== null" class="expanded-card-overlay">
-    <div class="expanded-card">
-      <h2>{{ selectedCard.name }}</h2>
-      <p>Status: {{ selectedCard.status }}</p>
-      <!-- Affichez plus d'informations ici -->
-    </div>
-
-</div>
+      <expanded
+        v-if="selectedCard"
+        :key="selectedCard.key"
+        :name="selectedCard.name"
+        :status="selectedCard.status"
+        :url="selectedCard.url"
+        :species="selectedCard.species"
+        @click="toggleCardDecrease(selectedCard.id)"
+        :class="{ expanded: selectedCard.id === expandedCardId }"
+        />
 </template>
 
 <style scoped>
@@ -47,37 +50,9 @@ import topmenu from '@/components/topmenu.vue';
 }
 
 .expanded {
-  z-index: 2;
-  position: fixed;
-  top: 56%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.3);
-  background-color: #cbef8e;
-  border-radius: 7.5px;
-  border: none;
+
 }
 
-.expanded-card-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* 
-.expanded-card {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-} */
-.expanded .card:hover {
-  pointer-events: none; /* Désactive le hover */
-}
 </style>
 
 <script>
@@ -86,6 +61,7 @@ name: 'gallery',
 components: {
     card,
     topmenu,
+    expanded,
 }, 
 data() {
     return {
@@ -195,13 +171,18 @@ methods: {
     },
     toggleCardExpansion(cardId) {
         console.log('clic');
-      if (this.expandedCardId === cardId) {
-        this.expandedCardId = null;
-        this.selectedCard = null;
-      } else {
+      // if (this.expandedCardId === cardId) {
+      //   this.expandedCardId = null;
+      //   this.selectedCard = null;}
         this.expandedCardId = cardId;
         this.selectedCard = this.characters.find(card => card.id === cardId);
-      }
+        console.log(this.selectedCard.url);
+      
+    },
+    toggleCardDecrease(id){
+      console.log('clic');
+      this.expandedCardId = null;
+      this.selectedCard = null;
     }
     },
 }

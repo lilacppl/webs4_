@@ -19,22 +19,26 @@
 
 <style scoped>
 .expanded{
+    z-index: 2;
+    position: fixed;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.3);
+    background-color: #cbef8e;
+    border-radius: 7.5px;
+    border: none;
     border-radius: 5px; /* Add rounded corners */
     padding: 30px; /* Add some padding inside the card */
-    margin: 10px; /* Add margin around the card */
-    width: 300px; /* Set a fixed width for each card */
-    height: 400px; /* Set a fixed width for each card */
-    box-shadow: 0 6px 5px rgba(255, 255, 255, 0.1); /* Add a box shadow for depth */
-    border: 3px solid #7EBA57;
+    box-shadow: 0 6px 5px rgba(255, 255, 255, 0.1); 
     transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
     font-family: "Patrick Hand";
     color:var(--vt-c-indigo);
 }
 
 .expanded.hovered {
-    background-color: #cbef8e;
+    /* background-color: #cbef8e;
     transform: scale(1.05);
-    border-color: transparent;
+    border-color: transparent; */
 }
 
 .quote{
@@ -54,7 +58,13 @@ h2{
     top: -5%;
 }
 .expanded-overlay{
-    
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
 
