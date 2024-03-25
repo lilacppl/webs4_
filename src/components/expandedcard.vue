@@ -1,13 +1,14 @@
 
 <template>
-    <div class="card-grid">
-        <div id="card" class="card" @mouseover="isHovered = true" 
+    <div class="expanded-overlay">
+        <div id="expanded" class="expanded" @mouseover="isHovered = true" 
             @mouseout="isHovered = false"
             :class="{ 'hovered': isHovered }">
             <h2>{{ name }}</h2>
             <img class ="img" v-bind:src="url" alt="Character Image">
             <p class="quote">{{ status }}</p>
             <p> {{ species }}</p>
+            <p> blabla </p>
         </div>
     </div>
 </template>
@@ -17,7 +18,7 @@
 </style>
 
 <style scoped>
-.card{
+.expanded{
     border-radius: 5px; /* Add rounded corners */
     padding: 30px; /* Add some padding inside the card */
     margin: 10px; /* Add margin around the card */
@@ -30,7 +31,7 @@
     color:var(--vt-c-indigo);
 }
 
-.card.hovered {
+.expanded.hovered {
     background-color: #cbef8e;
     transform: scale(1.05);
     border-color: transparent;
@@ -52,11 +53,14 @@ h2{
     position: relative;
     top: -5%;
 }
+.expanded-overlay{
+    
+}
 </style>
 
 <script>
 export default {
-name: 'card',
+name: 'expanded',
 props: {
     key: Int8Array,
     name: String,

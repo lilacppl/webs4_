@@ -25,6 +25,7 @@ import topmenu from '@/components/topmenu.vue';
       <p>Status: {{ selectedCard.status }}</p>
       <!-- Affichez plus d'informations ici -->
     </div>
+
 </div>
 </template>
 
@@ -48,7 +49,7 @@ import topmenu from '@/components/topmenu.vue';
 .expanded {
   z-index: 2;
   position: fixed;
-  top: 50%;
+  top: 56%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1.3);
   background-color: #cbef8e;
@@ -62,18 +63,18 @@ import topmenu from '@/components/topmenu.vue';
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+/* 
 .expanded-card {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
+} */
 .expanded .card:hover {
   pointer-events: none; /* Désactive le hover */
 }
