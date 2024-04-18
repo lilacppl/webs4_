@@ -8,7 +8,9 @@
             <img class ="img" v-bind:src="url" alt="Character Image">
             <p class="quote">{{ status }}</p>
             <p> {{ species }}</p>
-            <p> blabla </p>
+            <p> {{ type }} </p>
+            <p> {{ planet }} </p>
+
         </div>
     </div>
 </template>
@@ -21,35 +23,30 @@
 .expanded{
     z-index: 2;
     position: fixed;
-    top: 56%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1.3);
     background-color: #cbef8e;
-    border-radius: 7.5px;
     border: none;
     border-radius: 5px; /* Add rounded corners */
-    padding: 30px; /* Add some padding inside the card */
+    padding: 1%; /* Add some padding inside the card */
     box-shadow: 0 6px 5px rgba(255, 255, 255, 0.1); 
     transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
     font-family: "Patrick Hand";
     color:var(--vt-c-indigo);
-}
-
-.expanded.hovered {
-    /* background-color: #cbef8e;
-    transform: scale(1.05);
-    border-color: transparent; */
+    width: 15%;
+    height: 45%;
 }
 
 .quote{
     font-style: italic;
 }
 .img{
-    width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    width: 80%;
 }
 
 h2{
@@ -76,7 +73,9 @@ props: {
     name: String,
     status: String,
     species: String,
-    url: String
+    url: String,
+    planet: String,
+    type: String
 },
 data() {
     return {

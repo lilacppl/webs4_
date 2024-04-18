@@ -25,8 +25,10 @@ import expanded from "@/components/expandedcard.vue";
         :key="selectedCard.key"
         :name="selectedCard.name"
         :status="selectedCard.status"
-        :url="selectedCard.url"
+        :url="selectedCard.image"
         :species="selectedCard.species"
+        :type="selectedCard.gender"
+        :planet="selectedCard.location.name"
         @click="toggleCardDecrease(selectedCard.id)"
         :class="{ expanded: selectedCard.id === expandedCardId }"
         />
@@ -76,6 +78,7 @@ data() {
         filteredCharacters: [], // les personnages filtrés par statut et recherche
         expandedCardId: null,
         selectedCard: null,
+        keyword: '',
     }
 },
 mounted() {
